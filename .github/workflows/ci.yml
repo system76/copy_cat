@@ -1,26 +1,24 @@
+---
+
 name: Continuous Integration
 
 on:
   pull_request:
-    types: [opened, reopened, synchronize]
+    types:
+      - opened
+      - reopened
+      - synchronize
   push:
     branches:
-      - 'master'
+      - "!master"
+      - "!staging"
+
 jobs:
   Test:
     runs-on: ubuntu-latest
 
     container:
       image: elixir:1.10-alpine
-
-    services:
-      mysql:
-        image: mysql:5.7.24
-        env:
-          MYSQL_ROOT_PASSWORD: system76
-
-      redis:
-        image: redis
 
     steps:
       - name: Checkout Code
@@ -43,11 +41,6 @@ jobs:
 
       - name: Run Tests
         run: mix test
-        env:
-          DB_HOST: mysql
-          DB_PORT: ${{ job.services.mysql.ports[3306] }}
-          REDIS_HOST: redis
-          REDIS_PORT: ${{ job.services.redis.ports[6379] }}
 
   Format:
     runs-on: ubuntu-latest
