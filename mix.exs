@@ -3,13 +3,13 @@ defmodule CopyCat.MixProject do
 
   def project do
     [
-      app: :copycat,
+      app: :copy_cat,
       version: "0.1.0",
       elixir: "~> 1.10",
       start_permanent: Mix.env() == :prod,
       deps: deps(),
       releases: [
-        copycat: [
+        copy_cat: [
           include_executables_for: [:unix],
           applications: [runtime_tools: :permanent]
         ]
