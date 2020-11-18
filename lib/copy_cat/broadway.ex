@@ -39,6 +39,6 @@ defmodule CopyCat.Broadway do
 
   @impl true
   def handle_failed([failed_message], _context) do
-    failed_message
+    [failed_message]
   end
 end
