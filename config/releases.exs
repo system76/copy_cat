@@ -1,16 +1,18 @@
 import Config
 
-producer_config =
-  "SQS_PRODUCER"
+config =
+  "CONFIG"
   |> System.fetch_env!()
   |> Jason.decode!()
 
 config :copy_cat,
   producer:
     {BroadwaySQS.Producer,
-     queue_url: producer_config["queue_url"],
+     queue_url: config["COPYCAT_SQS_URL"],
      config: [
-       access_key_id: producer_config["access_key_id"],
-       secret_access_key: producer_config["secret_access_key"],
-       region: producer_config["region"]
+       access_key_id: config["AWS_ACCESS_KEY_ID"],
+       secret_access_key: config["AWS_SECRET_ACCESS_KEY"],
+       region: config["AWS_REGION"]
      ]}
+
+config :appsignal, :config, push_api_key: config["APPSIGNAL_KEY"]
