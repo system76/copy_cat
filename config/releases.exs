@@ -8,7 +8,7 @@ config =
 config :copy_cat,
   producer:
     {BroadwaySQS.Producer,
-     queue_url: config["COPYCAT_SQS_URL"],
+     queue_url: config["SQS_URL"],
      config: [
        access_key_id: config["AWS_ACCESS_KEY_ID"],
        secret_access_key: config["AWS_SECRET_ACCESS_KEY"],
