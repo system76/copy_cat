@@ -28,7 +28,18 @@ defmodule CopyCat.Broadway do
 
   @impl true
   @decorate transaction(:queue)
-  def handle_message(_, %Message{} = message, _context) do
+  def handle_message(_, %Message{data: data} = message, _context) do
+    bottle =
+      data
+      |> URI.decode()
+      |> Bottle.Core.V1.Bottle.decode()
+
+    Bottle.RequestId.read(:queue, bottle)
+
+    with {:error, reason} <- notify_handler(bottle.resource) do
+      Logger.error(reason)
+    end
+
     message
   end
 
@@ -40,5 +51,10 @@ defmodule CopyCat.Broadway do
   @impl true
   def handle_failed([failed_message], _context) do
     [failed_message]
+  end
+
+  defp notify_handler({event, _message}) do
+    Logger.debug("Ignoring #{event} message")
+    :ignored
   end
 end
