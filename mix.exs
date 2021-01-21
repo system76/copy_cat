@@ -29,7 +29,7 @@ defmodule CopyCat.MixProject do
   defp deps do
     [
       {:appsignal, "~> 1.0"},
-      {:bottle, github: "system76/bottle", branch: "elixir"},
+      {:bottle, github: "system76/bottle", ref: "1621c66"},
       {:broadway_sqs, "~> 0.6.0"},
       {:saxy, "~> 1.1"},
       {:hackney, "~> 1.16"},

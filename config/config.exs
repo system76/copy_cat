@@ -17,6 +17,6 @@ config :logger, :console,
 
 config :appsignal, :config,
   active: false,
-  name: "Copy Cat"
+  name: "CopyCat"
 
 import_config "#{Mix.env()}.exs"

@@ -12,7 +12,7 @@ defmodule CopyCat.Application do
       {CopyCat.Broadway, []}
     ]
 
-    Logger.info("Starting Copy Cat")
+    Logger.info("Starting CopyCat")
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
