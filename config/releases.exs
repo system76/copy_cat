@@ -15,4 +15,6 @@ config :copy_cat,
        region: config["AWS_REGION"]
      ]}
 
-config :appsignal, :config, push_api_key: config["APPSIGNAL_KEY"]
+config :appsignal, :config,
+  push_api_key: config["APPSIGNAL_PUSH_KEY"],
+  env: config["ENV"]
