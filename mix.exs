@@ -28,13 +28,13 @@ defmodule CopyCat.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:appsignal, "~> 1.0"},
+      {:appsignal, "~> 2.0"},
       {:bottle, github: "system76/bottle", ref: "1621c66"},
       {:broadway_sqs, "~> 0.6.0"},
-      {:saxy, "~> 1.1"},
-      {:hackney, "~> 1.16"},
+      {:saxy, "~> 1.3"},
+      {:hackney, "~> 1.17"},
       {:jason, "~> 1.2", override: true},
-      {:credo, "~> 1.3", only: [:dev, :test]}
+      {:credo, "~> 1.5", only: [:dev, :test]}
     ]
   end
 end
